@@ -34,7 +34,7 @@ module RoughSwal
     RoughSwal::PARAMETERS.each do |name|
       class_eval <<-EOS
         def #{name}(value)
-          @swal_params['#{name}'] = value.nil? ? 'null' : value
+          @swal_params['#{name}'] = value
         end
       EOS
     end
@@ -55,14 +55,6 @@ module RoughSwal
     def method_missing(name, pre_title = nil, pre_text = nil)
       params = Preset.find(name) || super
       @swal_params.merge!(params)
-      title pre_title
-      text pre_text if pre_text
-    end
-
-
-    private
-    def register_preset(pre_type, pre_title = nil, pre_text = nil)
-      type pre_type
       title pre_title
       text pre_text if pre_text
     end

@@ -46,12 +46,16 @@ describe 'Alerts', type: :request do
     it do
       RoughSwal.configure do
         default {
+          confirm_button_text '良し'
           confirm_button_color '#04c'
+          cancel_button_text '悪し'
         }
       end
 
       get '/alerts/templater'
+      expect(response.body).to include(':"良し"')
       expect(response.body).to include(':"#04c"')
+      expect(response.body).to include(':"悪し"')
     end
 
     it do

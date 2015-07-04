@@ -1,5 +1,3 @@
-require_dependency 'rough_swal'
-
 class AlertsController < ApplicationController
   def direct
     swal {

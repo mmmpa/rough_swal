@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors     = ["mmmpa"]
   spec.email       = ["mmmpa.mmmpa@gmail.com"]
   spec.homepage    = "http://mmmpa.net"
-  spec.summary     = "Insert script tag for excluding Swal."
-  spec.description = "Insert script tag for excluding Swal."
+  spec.summary     = "Insert script tag for excluding Swal from controller."
+  spec.description = "Insert script tag for excluding Swal from controller."
   spec.license     = "MIT"
 
   spec.files         = `git ls-files`.split("\n")
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency 'rspec-html-matchers'
+  spec.add_development_dependency "rspec-html-matchers"
   spec.add_development_dependency "factory_girl_rails"
   spec.add_development_dependency "coveralls"
 end
