@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rough_swal (0.0.2)
+    rough_swal (0.0.3)
       rails (~> 4.0.0)
 
 GEM
