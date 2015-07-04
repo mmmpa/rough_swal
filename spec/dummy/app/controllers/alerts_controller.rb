@@ -1,4 +1,8 @@
 class AlertsController < ApplicationController
+  def index
+
+  end
+
   def direct
     swal {
       success 'direct', 'direct rendering'
@@ -8,7 +12,7 @@ class AlertsController < ApplicationController
       when 'json'
         render json: {json: :json}
       when 'text'
-        render plain: 'text'
+        render text: 'text'
       when 'xml'
         render xml: '<xml><body>html</body></xml>'
       else

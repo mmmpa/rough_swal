@@ -1,5 +1,5 @@
 module RoughSwal
-  PARAMETERS = [
+  SWAL_PARAMETERS = [
       :title,
       :text,
       :type,
@@ -25,13 +25,8 @@ module RoughSwal
   ]
 
 
-  def self.configure(&block)
-    Configure.(&block) if block_given?
-  end
-
-
   module ParamsSetter
-    RoughSwal::PARAMETERS.each do |name|
+    RoughSwal::SWAL_PARAMETERS.each do |name|
       class_eval <<-EOS
         def #{name}(value)
           @swal_params['#{name}'] = value
@@ -90,15 +85,16 @@ module RoughSwal
   class Default
     include ParamsSetter
 
+    class << self
+      def call(&block)
+        @default = new
+        @default.instance_eval(&block)
+      end
 
-    def self.call(&block)
-      @default = new
-      @default.instance_eval(&block)
-    end
 
-
-    def self.params
-      @default ? @default.params : {}
+      def params
+        @default ? @default.params : {}
+      end
     end
 
 
@@ -108,22 +104,24 @@ module RoughSwal
 
 
     def params
-      @swal_params || {}
+      @swal_params
     end
   end
 
 
   class Preset
-    def self.call(name, &block)
-      @preset ||= {}
-      @preset[name] = Default.new.tap do |preset|
-        preset.instance_eval(&block)
+    class << self
+      def call(name, &block)
+        @preset ||= {}
+        @preset[name] = Default.new.tap do |preset|
+          preset.instance_eval(&block)
+        end
       end
-    end
 
 
-    def self.find(name)
-      @preset[name].try(:params) || (raise NotFound)
+      def find(name)
+        @preset[name].try(:params) || (raise NotFound)
+      end
     end
 
 
@@ -172,6 +170,11 @@ module RoughSwal
     def tag(js)
       "<script>#{js}</script>"
     end
+  end
+
+
+  def self.configure(&block)
+    Configure.(&block) if block_given?
   end
 
 

@@ -93,7 +93,10 @@ describe 'Alerts', type: :request do
 
     context 'render text' do
       let(:first_path) { '/alerts/direct/text' }
-      include_examples 'write after link'
+      it do
+        get first_path
+        expect(response.body).to include('swal({')
+      end
     end
 
     context 'render xml' do
