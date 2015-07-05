@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mmmpa/rough_swal.svg)](https://travis-ci.org/mmmpa/rough_swal)
 [![Coverage Status](https://coveralls.io/repos/mmmpa/rough_swal/badge.svg?branch=master)](https://coveralls.io/r/mmmpa/rough_swal?branch=master)
-
+[![Code Climate](https://codeclimate.com/github/mmmpa/rough_swal/badges/gpa.svg)](https://codeclimate.com/github/mmmpa/rough_swal)
 
 # RoughSwal
 
