@@ -1,13 +1,17 @@
+[![Build Status](https://travis-ci.org/mmmpa/rough_swal.svg)](https://travis-ci.org/mmmpa/rough_swal)
+[![Coverage Status](https://coveralls.io/repos/mmmpa/rough_swal/badge.svg?branch=master)](https://coveralls.io/r/mmmpa/rough_swal?branch=master)
+[![Code Climate](https://codeclimate.com/github/mmmpa/rough_swal/badges/gpa.svg)](https://codeclimate.com/github/mmmpa/rough_swal)
+
 # RoughSwal
 
 RoughSwalはRailsのControllerからアラート代わりに[SweetAlert](http://t4t5.github.io/sweetalert/)を簡単に呼び出すために書かれました。
 
 ```ruby
 def create
-    User.create!(user_params)
+  User.create!(user_params)
 rescue ActiveRecord::RecordInvalid => e
-    swal{ error '不正な値が含まれています', '項目を確認の上、再度送信してください' }
-    @user = e.record
+  swal{ error '不正な値が含まれています', '項目を確認の上、再度送信してください' }
+  @user = e.record
 end
 ```
 
